@@ -1,4 +1,8 @@
 <footer class="site-footer">
+  <div style="text-align: center;">
+  <?php echo apply_shortcodes( '[contact-form-7 id="63" title="Contact form Footer"]' ); ?>
+  </div>
+
       <div class="site-footer__inner container container--narrow">
         <div class="group">
           <div class="site-footer__col-one">
