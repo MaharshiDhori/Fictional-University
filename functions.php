@@ -37,3 +37,12 @@
         }
     }
 add_action('pre_get_posts', 'university_adjust_queries');
+
+
+add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
+ if(strpos($html, 'linked.com') !== false || strpos($html, 'youtu.be') !== false){
+ return '<div class="responsive-embed-container embed-responsive-16by9">' . $html . '</div>';
+ } else {
+ return $html;
+ }
+}, 10, 4);
