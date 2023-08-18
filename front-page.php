@@ -123,7 +123,6 @@
         </div>
       </div>
     </div>
-    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7050001112568840193" height="482" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
     <div class="slider__bullets glide__bullets" data-glide-el="controls[nav]"></div>
   </div>
 </div>
