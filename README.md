@@ -5,9 +5,9 @@
 The University site have been that have been made using wordpress by developing it's own theme.
 
 ## PHP/WP Functionality
--Created Custom Post Types, Custome Fields.
--Used many Custome queries to manipulate the content.
--Displaying content dynamically by managing relationship of the various Custom post types.
+-Created Custom Post Types, Custome Fields.<br>
+-Used many Custome queries to manipulate the content. <br>
+-Displaying content dynamically by managing relationship of the various Custom post types. <br>
 
 ## Built using
 
