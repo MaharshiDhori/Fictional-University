@@ -21,6 +21,13 @@
 
     
     function university_adjust_queries($query){
+        if(!is_admin() and is_post_type_archive('programs') and is_main_query()) {
+            $query->set('order_by', 'title');
+            $query->set('order', 'ASC');
+            $query->set('posts_per_page', -1);
+        }
+
+
         if(!is_admin() and is_post_type_archive('events') and $query->is_main_query()){
             $today = date('Ymd');
             $query->set( 'meta_key', 'event_date');
