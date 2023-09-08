@@ -34,6 +34,7 @@ function pageBanner($args = null)
 
 function university_files()
 {
+    wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js/key="API GOES HERE"', null, '1.0', true);
     wp_enqueue_script('university-main-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
     wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
     wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -67,6 +68,11 @@ function university_adjust_queries($query)
         $query->set('posts_per_page', -1);
     }
 
+    // For Displaying multiple pin locaiton in single map
+    if (!is_admin() and is_post_type_archive('campus') and is_main_query()) {
+        $query->set('posts_per_page', -1);
+    }
+
 
     if (!is_admin() and is_post_type_archive('events') and $query->is_main_query()) {
         $today = date('Ymd');
@@ -93,3 +99,13 @@ add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
         return $html;
     }
 }, 10, 4);
+
+
+
+// Google Map
+
+function universityMapKey($api){
+    $api['key'] = 'apikeygoeshere';
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'universityMapKey');
