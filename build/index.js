@@ -186,16 +186,33 @@ __webpack_require__.r(__webpack_exports__);
 
 class Search {
   constructor() {
+    this.resultsDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-overlay__results");
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-search-trigger");
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close");
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay");
+    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-term");
     this.events();
     this.isOverlayOpen = false;
+    this.isSearchVisible = false;
+    this.typingTimer;
   }
   events() {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keyup", this.keyPressDispatcher.bind(this));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keydown", this.keyPressDispatcher.bind(this));
+    this.searchField.on("keydown", this.typingLogic.bind(this));
+  }
+  typingLogic() {
+    clearTimeout(this.typingTimer);
+    if (!this.isSearchVisible) {
+      this.resultsDiv.html('<div class="spinner-loader"></div>');
+      this.isSearchVisible = true;
+    }
+    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+  }
+  getResults() {
+    this.resultsDiv.html("Imagine real search results here...");
+    this.isSearchVisible = false;
   }
   keyPressDispatcher(e) {
     if (e.keyCode == 83 && !this.isOverlayOpen) {
