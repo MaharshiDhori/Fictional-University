@@ -2,7 +2,7 @@
 
 # Fictional University
 
-The University site have been that have been made using wordpress by developing it's own theme.
+The University site have been made using wordpress by developing it's own theme.
 
 ## PHP/WP Functionality
 -Created Custom Post Types, Custome Fields.<br>
